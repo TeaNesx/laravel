@@ -1,7 +1,7 @@
 {
-  "assets/style.scss": {
+  "resources/scss/style.scss": {
     "file": "laravel.min.css",
-    "src": "assets/style.scss",
+    "src": "resources/scss/style.scss",
     "isEntry": true
   }
 }

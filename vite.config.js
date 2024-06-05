@@ -6,7 +6,7 @@ import path from "path";
 export default defineConfig({
     plugins: [
         laravel({
-            input: ['assets/style.scss'],
+            input: ['resources/scss/style.scss'],
             refresh: true,
         }),
     ],
@@ -17,7 +17,7 @@ export default defineConfig({
         ),
         emptyOutDir: false,
         rollupOptions: {
-        input: path.resolve(__dirname, "assets/style.scss"),
+        input: path.resolve(__dirname, "resources/scss/style.scss"),
         output: {
             assetFileNames: "laravel.min.css",
         },
