@@ -129,5 +129,10 @@
                 </div>
             </div>
         </div>
+        @if(request('locale'))
+            <script>
+                window.location.href = "/{{ request('locale') }}";
+            </script>
+        @endif
     </body>
 </html>
