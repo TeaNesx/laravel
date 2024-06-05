@@ -16,28 +16,15 @@ class GeoLocale
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
     public function handle(Request $request, Closure $next): Response
-    {
-        $position = Location::get($request->ip());
+    {   
+        $clientIP = file_get_contents('https://api.ipify.org');
+        $position = Location::get($clientIP);
 
-        if ($position) {
-            $countryCode = $position->countryCode;
+        $locale = $position ? (strtolower($position->countryCode) === 'us' ? 'en' : strtolower($position->countryCode)) : 'en';
 
-            switch ($countryCode) {
-                case 'DE':
-                    $locale = 'de';
-                    break;
-                case 'ES':
-                    $locale = 'es';
-                    break;
-                default:
-                    $locale = 'en';
-                    break;
-            }
-            App::setLocale($locale);
-        } else {
-            App::setLocale('en');
-        }
+        App::setLocale($locale);
 
         return $next($request);
+
     }
 }
