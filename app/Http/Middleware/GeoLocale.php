@@ -18,7 +18,7 @@ class GeoLocale
     public function handle(Request $request, Closure $next): Response
     {
         $position = Location::get($request->ip());
-        
+
         if ($position) {
             $countryCode = $position->countryCode;
 
